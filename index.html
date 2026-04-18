@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>I Love You ♡</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,600&family=Lato:wght@300;400&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       min-height: 100vh;
@@ -20,22 +29,39 @@
     }
 
     /* floating petals */
-    #petals { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    #petals {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
     .petal {
-      position: absolute; top: -30px;
+      position: absolute;
+      top: -30px;
       opacity: 0;
       animation: petalFall linear infinite;
       user-select: none;
     }
+
     @keyframes petalFall {
-      0%   { transform: translateY(0) rotate(0deg); opacity: 0.7; }
-      100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     .card {
-      position: relative; z-index: 2;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(220,100,130,0.18);
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(220, 100, 130, 0.18);
       border-radius: 32px;
       padding: 2.4rem 2.8rem 2.8rem;
       max-width: 420px;
@@ -43,7 +69,7 @@
       text-align: center;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 8px 40px rgba(220,100,130,0.1);
+      box-shadow: 0 8px 40px rgba(220, 100, 130, 0.1);
     }
 
     /* heart grid */
@@ -55,18 +81,25 @@
     }
 
     .hcell {
-      width: 28px; height: 28px;
-      display: flex; align-items: center; justify-content: center;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 20px;
       opacity: 0;
       transform: scale(0.3);
-      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(.34,1.56,.64,1);
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(.34, 1.56, .64, 1);
     }
+
     .hcell.show {
       opacity: 1;
       transform: scale(1);
     }
-    .hcell.empty { visibility: hidden; }
+
+    .hcell.empty {
+      visibility: hidden;
+    }
 
     /* progress steps */
     #steps {
@@ -76,14 +109,23 @@
       margin-bottom: 1.4rem;
       flex-wrap: wrap;
     }
+
     .step-dot {
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #f0c0cc;
       transition: background 0.4s, transform 0.3s;
     }
-    .step-dot.active { background: #e05070; transform: scale(1.35); }
-    .step-dot.done   { background: #e0879a; }
+
+    .step-dot.active {
+      background: #e05070;
+      transform: scale(1.35);
+    }
+
+    .step-dot.done {
+      background: #e0879a;
+    }
 
     /* greeting text */
     #greet-text {
@@ -96,7 +138,11 @@
       transition: opacity 0.8s ease, transform 0.8s ease;
       margin-bottom: 0.5rem;
     }
-    #greet-text.show { opacity: 1; transform: translateY(0); }
+
+    #greet-text.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     #sub-text {
       font-weight: 300;
@@ -106,7 +152,10 @@
       opacity: 0;
       transition: opacity 1s ease 0.4s;
     }
-    #sub-text.show { opacity: 1; }
+
+    #sub-text.show {
+      opacity: 1;
+    }
 
     /* controls */
     #controls {
@@ -115,6 +164,7 @@
       gap: 12px;
       justify-content: center;
     }
+
     button {
       font-family: 'Lato', sans-serif;
       font-weight: 400;
@@ -125,18 +175,28 @@
       cursor: pointer;
       transition: all 0.2s;
     }
+
     #btn-play {
       background: #e05070;
       color: #fff;
       border: none;
     }
-    #btn-play:hover { background: #c03050; transform: scale(1.04); }
+
+    #btn-play:hover {
+      background: #c03050;
+      transform: scale(1.04);
+    }
+
     #btn-reset {
       background: transparent;
       color: #c06070;
       border: 1px solid #e0a0b0;
     }
-    #btn-reset:hover { background: #fff0f3; transform: scale(1.04); }
+
+    #btn-reset:hover {
+      background: #fff0f3;
+      transform: scale(1.04);
+    }
 
     .speed-row {
       margin-top: 1rem;
@@ -147,7 +207,11 @@
       font-size: 12px;
       color: #c09090;
     }
-    .speed-row input { width: 90px; accent-color: #e05070; }
+
+    .speed-row input {
+      width: 90px;
+      accent-color: #e05070;
+    }
 
     #progress-label {
       font-size: 12px;
@@ -158,151 +222,153 @@
     }
   </style>
 </head>
+
 <body>
 
-<div id="petals"></div>
+  <div id="petals"></div>
 
-<div class="card">
-  <div id="steps"></div>
-  <div id="heart-grid"></div>
-  <div id="greet-text">Semangat Sob</div>
-  <div id="sub-text">UTSNYA</div>
-  <div id="progress-label"></div>
-  <div id="controls">
-    <button id="btn-play">▶ Mulai</button>
-    <button id="btn-reset">↺ Ulang</button>
+  <div class="card">
+    <div id="steps"></div>
+    <div id="heart-grid"></div>
+    <div id="greet-text">Semangat Sob</div>
+    <div id="sub-text">UTSNYA</div>
+    <div id="progress-label"></div>
+    <div id="controls">
+      <button id="btn-play">▶ Mulai</button>
+      <button id="btn-reset">↺ Ulang</button>
+    </div>
+    <div class="speed-row">
+      <span>Lambat</span>
+      <input type="range" id="speed" min="1" max="5" value="3" step="1" />
+      <span>Cepat</span>
+    </div>
   </div>
-  <div class="speed-row">
-    <span>Lambat</span>
-    <input type="range" id="speed" min="1" max="5" value="3" step="1"/>
-    <span>Cepat</span>
-  </div>
-</div>
 
-<script>
-  /* 11x11 heart map: 1 = heart cell, 0 = empty */
-  const MAP = [
-    [0,0,1,1,0,0,0,1,1,0,0],
-    [0,1,1,1,1,0,1,1,1,1,0],
-    [1,1,1,1,1,1,1,1,1,1,1],
-    [1,1,1,1,1,1,1,1,1,1,1],
-    [1,1,1,1,1,1,1,1,1,1,1],
-    [0,1,1,1,1,1,1,1,1,1,0],
-    [0,1,1,1,1,1,1,1,1,1,0],
-    [0,0,1,1,1,1,1,1,1,0,0],
-    [0,0,0,1,1,1,1,1,0,0,0],
-    [0,0,0,0,1,1,1,0,0,0,0],
-    [0,0,0,0,0,1,0,0,0,0,0],
-  ];
+  <script>
+    /* 11x11 heart map: 1 = heart cell, 0 = empty */
+    const MAP = [
+      [0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+      [0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+      [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      [0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
+      [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    ];
 
-  /* collect cells row by row for step animation */
-  const ROWS = MAP.length;
-  const COLS = MAP[0].length;
-  const rowCells = []; /* array of arrays of cell indices */
+    /* collect cells row by row for step animation */
+    const ROWS = MAP.length;
+    const COLS = MAP[0].length;
+    const rowCells = []; /* array of arrays of cell indices */
 
-  const grid = document.getElementById('heart-grid');
-  const cells = [];
+    const grid = document.getElementById('heart-grid');
+    const cells = [];
 
-  MAP.forEach((row, r) => {
-    const rowIdx = [];
-    row.forEach((v, c) => {
-      const d = document.createElement('div');
-      d.className = 'hcell' + (v === 0 ? ' empty' : '');
-      if (v === 1) d.textContent = '❤️';
-      grid.appendChild(d);
-      cells.push({ el: d, isHeart: v === 1 });
-      if (v === 1) rowIdx.push(cells.length - 1);
+    MAP.forEach((row, r) => {
+      const rowIdx = [];
+      row.forEach((v, c) => {
+        const d = document.createElement('div');
+        d.className = 'hcell' + (v === 0 ? ' empty' : '');
+        if (v === 1) d.textContent = '❤️';
+        grid.appendChild(d);
+        cells.push({ el: d, isHeart: v === 1 });
+        if (v === 1) rowIdx.push(cells.length - 1);
+      });
+      if (rowIdx.length) rowCells.push(rowIdx);
     });
-    if (rowIdx.length) rowCells.push(rowIdx);
-  });
 
-  /* step dots — one per row that has hearts */
-  const stepsEl = document.getElementById('steps');
-  const dots = [];
-  rowCells.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'step-dot';
-    stepsEl.appendChild(d);
-    dots.push(d);
-  });
+    /* step dots — one per row that has hearts */
+    const stepsEl = document.getElementById('steps');
+    const dots = [];
+    rowCells.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'step-dot';
+      stepsEl.appendChild(d);
+      dots.push(d);
+    });
 
-  const greetEl   = document.getElementById('greet-text');
-  const subEl     = document.getElementById('sub-text');
-  const label     = document.getElementById('progress-label');
-  const btnPlay   = document.getElementById('btn-play');
-  const btnReset  = document.getElementById('btn-reset');
-  const speedSlider = document.getElementById('speed');
+    const greetEl = document.getElementById('greet-text');
+    const subEl = document.getElementById('sub-text');
+    const label = document.getElementById('progress-label');
+    const btnPlay = document.getElementById('btn-play');
+    const btnReset = document.getElementById('btn-reset');
+    const speedSlider = document.getElementById('speed');
 
-  let timer = null;
-  let running = false;
-  let currentStep = 0;
+    let timer = null;
+    let running = false;
+    let currentStep = 0;
 
-  function getDelay() {
-    const v = parseInt(speedSlider.value);
-    /* speed 1=slow(600ms) → 5=fast(80ms) */
-    return Math.round(600 - (v - 1) * 130);
-  }
-
-  function resetAll() {
-    clearTimeout(timer);
-    running = false;
-    currentStep = 0;
-    cells.forEach(c => { c.el.classList.remove('show'); });
-    dots.forEach(d => { d.className = 'step-dot'; });
-    greetEl.classList.remove('show');
-    subEl.classList.remove('show');
-    label.textContent = '';
-    btnPlay.textContent = '▶ Mulai';
-  }
-
-  function revealStep(step) {
-    if (step >= rowCells.length) {
-      /* all done — show text */
-      greetEl.classList.add('show');
-      subEl.classList.add('show');
-      label.textContent = '❤️ selesai!';
-      running = false;
-      btnPlay.textContent = '▶ Mulai';
-      return;
+    function getDelay() {
+      const v = parseInt(speedSlider.value);
+      /* speed 1=slow(600ms) → 5=fast(80ms) */
+      return Math.round(600 - (v - 1) * 130);
     }
 
-    /* mark previous dot done */
-    if (step > 0) dots[step - 1].className = 'step-dot done';
-    dots[step].className = 'step-dot active';
+    function resetAll() {
+      clearTimeout(timer);
+      running = false;
+      currentStep = 0;
+      cells.forEach(c => { c.el.classList.remove('show'); });
+      dots.forEach(d => { d.className = 'step-dot'; });
+      greetEl.classList.remove('show');
+      subEl.classList.remove('show');
+      label.textContent = '';
+      btnPlay.textContent = '▶ Mulai';
+    }
 
-    /* show cells for this row */
-    rowCells[step].forEach(idx => cells[idx].el.classList.add('show'));
+    function revealStep(step) {
+      if (step >= rowCells.length) {
+        /* all done — show text */
+        greetEl.classList.add('show');
+        subEl.classList.add('show');
+        label.textContent = '❤️ selesai!';
+        running = false;
+        btnPlay.textContent = '▶ Mulai';
+        return;
+      }
 
-    const total = rowCells.length;
-    label.textContent = `baris ${step + 1} / ${total}`;
+      /* mark previous dot done */
+      if (step > 0) dots[step - 1].className = 'step-dot done';
+      dots[step].className = 'step-dot active';
 
-    currentStep = step + 1;
-    timer = setTimeout(() => revealStep(currentStep), getDelay());
-  }
+      /* show cells for this row */
+      rowCells[step].forEach(idx => cells[idx].el.classList.add('show'));
 
-  btnPlay.addEventListener('click', () => {
-    if (running) return;
-    if (currentStep >= rowCells.length) resetAll();
-    running = true;
-    btnPlay.textContent = '⏳ ...';
-    revealStep(currentStep);
-  });
+      const total = rowCells.length;
+      label.textContent = `baris ${step + 1} / ${total}`;
 
-  btnReset.addEventListener('click', resetAll);
+      currentStep = step + 1;
+      timer = setTimeout(() => revealStep(currentStep), getDelay());
+    }
 
-  /* floating petals */
-  const petalEl = document.getElementById('petals');
-  const petalSymbols = ['🌸','🌷','✿','❀','♡'];
-  for (let i = 0; i < 16; i++) {
-    const d = document.createElement('div');
-    d.className = 'petal';
-    d.textContent = petalSymbols[i % petalSymbols.length];
-    d.style.left = (Math.random() * 100) + '%';
-    d.style.fontSize = (10 + Math.random() * 12) + 'px';
-    d.style.animationDuration = (8 + Math.random() * 10) + 's';
-    d.style.animationDelay = (Math.random() * 12) + 's';
-    petalEl.appendChild(d);
-  }
-</script>
+    btnPlay.addEventListener('click', () => {
+      if (running) return;
+      if (currentStep >= rowCells.length) resetAll();
+      running = true;
+      btnPlay.textContent = '⏳ ...';
+      revealStep(currentStep);
+    });
+
+    btnReset.addEventListener('click', resetAll);
+
+    /* floating petals */
+    const petalEl = document.getElementById('petals');
+    const petalSymbols = ['🌸', '🌷', '✿', '❀', '♡'];
+    for (let i = 0; i < 16; i++) {
+      const d = document.createElement('div');
+      d.className = 'petal';
+      d.textContent = petalSymbols[i % petalSymbols.length];
+      d.style.left = (Math.random() * 100) + '%';
+      d.style.fontSize = (10 + Math.random() * 12) + 'px';
+      d.style.animationDuration = (8 + Math.random() * 10) + 's';
+      d.style.animationDelay = (Math.random() * 12) + 's';
+      petalEl.appendChild(d);
+    }
+  </script>
 </body>
+
 </html>
